@@ -1,0 +1,338 @@
+html,
+body {
+  background: #000;
+  color: white;
+  margin: 0;
+  padding: 0;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+  max-width: 1200px;
+  margin: auto;
+  padding-bottom: 50vmin;
+}
+
+nav {
+  padding: 0.5em 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 400px;
+  overflow: auto;
+}
+
+.container ::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  nav {
+    padding: 2em 2em 0 2em;
+    justify-content: left;
+  }
+}
+
+nav a {
+  padding: 0.5em 1em;
+  border: 2px solid currentColor;
+  display: inline-block;
+  text-decoration: none;
+  color: currentColor;
+  white-space: nowrap;
+  margin: 0.5em 0.5em 0.5em 0;
+  border-radius: 2em;
+  transition: color 0.2s;
+  opacity: 0;
+  animation: fadein 3s forwards;
+}
+
+nav a:nth-of-type(2) {
+  animation-delay: 500ms;
+}
+
+nav a:nth-of-type(3) {
+  animation-delay: 1000ms;
+}
+
+nav a:nth-of-type(4) {
+  animation-delay: 1500ms;
+}
+
+nav a:focus {
+  outline: none;
+  box-shadow: 0 0 2em #333;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #ff3399;
+}
+
+section {
+  text-align: left;
+  padding: 2em 2em 0 2em;
+
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+section img {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 2em 0 0;
+  border: 2px solid white;
+  border-radius: 2em;
+  box-shadow: 0 0 2em #555;
+}
+
+section h1 {
+  font-size: 4em;
+  font-weight: 600;
+  margin: 0;
+}
+
+section h2 {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0;
+}
+
+p {
+  max-width: 600px;
+  margin: 0 0 1em;
+}
+
+p,
+ul,
+ol,
+blockquote {
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-size: 150%;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  background: linear-gradient(to right, #6666ff, #0099ff, #ff3399, #6666ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 6s ease-in-out infinite;
+  background-size: 400% 100%;
+}
+
+h3 {
+  padding-top: 1em;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 120%;
+  color: #ff3399;
+}
+
+h4::before {
+  content: "✓ ";
+}
+
+hr {
+  margin: 2em 0 0;
+  max-width: 650px;
+}
+
+@keyframes rainbow_animation {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 2em;
+  list-style-position: inside;
+  list-style-type: square;
+}
+
+a {
+  color: inherit;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #ff3399;
+}
+
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 90%;
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  background: #6666ff;
+  border-radius: 0.5em;
+}
+
+pre {
+  max-width: 650px;
+  box-shadow: 0 0 2em #666;
+  border-radius: 2em !important;
+  overflow: hidden;
+  margin-bottom: 2em;
+  box-sizing: border-box;
+}
+
+pre code {
+  padding: 2em !important;
+  background: inherit;
+  font-size: 90%;
+  line-height: 1.5;
+}
+
+blockquote {
+  border-left: 0.25em solid #ff3399;
+  margin: 0 0 2em;
+  padding: 0 0 0 1em;
+}
+
+.example {
+  margin-bottom: 2em;
+}
+
+.example p {
+  margin-bottom: 1em;
+}
+
+.example a {
+  display: inline-block;
+  margin: 0 0.5em 0 0;
+  padding: 0.5em 1em;
+  border: 2px solid currentColor;
+  border-radius: 2em;
+  text-decoration: none;
+}
+
+/*!
+  Theme: Atelier Cave Light
+  Author: Bram de Haan (http://atelierbramdehaan.nl)
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.09.0
+*/
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+code.hljs {
+  padding: 3px 5px;
+}
+.hljs {
+  color: #585260;
+  background: #efecf4;
+}
+.hljs ::selection,
+.hljs::selection {
+  background-color: #8b8792;
+  color: #585260;
+}
+.hljs-comment {
+  color: #7e7887;
+}
+.hljs-tag {
+  color: #655f6d;
+}
+.hljs-operator,
+.hljs-punctuation,
+.hljs-subst {
+  color: #585260;
+}
+.hljs-operator {
+  opacity: 0.7;
+}
+.hljs-bullet,
+.hljs-deletion,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-template-variable,
+.hljs-variable {
+  color: #be4678;
+}
+.hljs-attr,
+.hljs-link,
+.hljs-literal,
+.hljs-number,
+.hljs-symbol,
+.hljs-variable.constant_ {
+  color: #aa573c;
+}
+.hljs-class .hljs-title,
+.hljs-title,
+.hljs-title.class_ {
+  color: #a06e3b;
+}
+.hljs-strong {
+  font-weight: 700;
+  color: #a06e3b;
+}
+.hljs-addition,
+.hljs-code,
+.hljs-string,
+.hljs-title.class_.inherited__ {
+  color: #2a9292;
+}
+.hljs-built_in,
+.hljs-doctag,
+.hljs-keyword.hljs-atrule,
+.hljs-quote,
+.hljs-regexp {
+  color: #398bc6;
+}
+.hljs-attribute,
+.hljs-function .hljs-title,
+.hljs-section,
+.hljs-title.function_,
+.ruby .hljs-property {
+  color: #576ddb;
+}
+.diff .hljs-meta,
+.hljs-keyword,
+.hljs-template-tag,
+.hljs-type {
+  color: #955ae7;
+}
+.hljs-emphasis {
+  color: #955ae7;
+  font-style: italic;
+}
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-meta .hljs-string {
+  color: #bf40bf;
+}
+.hljs-meta .hljs-keyword,
+.hljs-meta-keyword {
+  font-weight: 700;
+}
