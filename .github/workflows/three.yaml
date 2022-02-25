@@ -1,0 +1,31 @@
+name: three-js
+on:
+  push:
+    branches: [three-js]
+  pull_request:
+    branches: [three-js]
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Install Deno
+        uses: denoland/setup-deno@main
+        with:
+          deno-version: 1.18.2
+
+      - name: Build site
+        run: root=https://three-js.deno.dev deno run -A https://deno.land/x/ultra@v0.7.0/src/deno/build.ts
+
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: three-js
+          entrypoint: .ultra/ULTRA.js
