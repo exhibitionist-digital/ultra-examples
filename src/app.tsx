@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import useSWR, { SWRConfig } from "swr";
+import { SWRConfig } from "swr";
 import { Link, Route, Switch } from "wouter";
 import { Helmet } from "react-helmet";
 import ultraCache from "ultra/cache";
