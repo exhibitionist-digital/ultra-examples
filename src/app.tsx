@@ -65,7 +65,7 @@ const Meta = () => {
   const desc = "💎 Modern Streaming React Framework";
   return (
     <Helmet>
-      <title>Ultra</title>
+      <title>Ultra: Deno + React</title>
       <meta name="description" content={desc} />
       <link rel="stylesheet" href="/style.css" />
       <link rel="icon" href="/ultra.svg"></link>
