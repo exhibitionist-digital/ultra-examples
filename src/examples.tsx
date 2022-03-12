@@ -46,11 +46,7 @@ const Content = () => {
 
 export default Examples;
 
-export const fetcher = async (slug: string) => {
-  const res = await fetch(
+export const fetcher = (slug: string) =>
+  fetch(
     `https://d1vbyel82rxsrf.cloudfront.net${slug}`,
-  );
-
-  const data = await res.json();
-  return data || {};
-};
+  ).then((data) => data.json());

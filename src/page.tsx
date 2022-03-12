@@ -16,11 +16,11 @@ const Content = () => {
 
   const { data, error } = useSWR(location, fetcher);
 
-  if (error || !data?.content) return <strong>404</strong>;
+  if (error) return <strong>404</strong>;
 
   return (
     <main>
-      <div dangerouslySetInnerHTML={{ __html: data.content }}>
+      <div dangerouslySetInnerHTML={{ __html: data?.content }}>
       </div>
     </main>
   );
@@ -28,11 +28,7 @@ const Content = () => {
 
 export default Page;
 
-export const fetcher = async (slug: string) => {
-  const res = await fetch(
+export const fetcher = (slug: string) =>
+  fetch(
     `https://d1vbyel82rxsrf.cloudfront.net${slug}`,
-  );
-
-  const data = await res.json();
-  return data || {};
-};
+  ).then((data) => data.json());

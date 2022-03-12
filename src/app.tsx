@@ -6,11 +6,14 @@ import ultraCache from "ultra/cache";
 import Page from "./page.tsx";
 import GitHub from "./github.tsx";
 import Examples from "./examples.tsx";
-import { Cache } from "https://deno.land/x/ultra@v0.6/src/types.ts";
+import { Cache } from "https://deno.land/x/ultra/src/types.ts";
 
 const options = (cache: Cache) => ({
   provider: () => ultraCache(cache),
   suspense: true,
+  revalidateIfStale: false,
+  revalidateOnFocus: false,
+  revalidateOnMount: false,
 });
 
 const Ultra = ({ cache }: { cache: Cache }) => {
