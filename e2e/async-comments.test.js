@@ -39,28 +39,4 @@ Deno.test('Should display all async rendered comments on react-18 example app', 
     } finally {
       await browser.close();
     }
-})
-
-const testSelector = async (selector, expectedText) => {
-    const browser = await puppeteer.launch({
-        executablePath: Deno.env.get('chrome_path'),
-        headless: true,
-      }
-    );
-    const page = await browser.newPage();
-    await page.setViewport({ width: 979, height: 865 });
-    await page.goto('http://localhost:8000/');
-
-    try {
-      const comment = await page.waitForSelector(selector)
-      if (comment) {
-        const text = await page.evaluate(element => element.textContent, comment);
-        assertEquals(text, expectedText);
-      } else {
-        fail(`ERROR: Selector ${selector} not found`)
-      }
-    } finally {
-      await browser.close();
-    }
-    // return Promise.resolve();
-  }
+});
