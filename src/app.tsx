@@ -4,7 +4,6 @@ import { Link, Route, Switch, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
 import ultraCache from "ultra/cache";
 import Page from "./page.tsx";
-import GitHub from "./github.tsx";
 import Examples from "./examples.tsx";
 import { Cache } from "https://deno.land/x/ultra/src/types.ts";
 
