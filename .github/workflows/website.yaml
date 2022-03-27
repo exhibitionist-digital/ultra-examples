@@ -22,7 +22,7 @@ jobs:
           deno-version: 1.20.3
 
       - name: Build site
-        run: root=https://ultrajs.dev disableStreaming=1 deno run -A https://33ba-2001-8004-5110-11c-b091-9877-7942-b1b7.ngrok.io/build.ts
+        run: root=https://ultrajs.dev disableStreaming=1 deno run -A https://8337-2001-8004-14a0-2eaa-5962-1211-3b54-a3ea.ngrok.io/build.ts
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
