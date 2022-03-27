@@ -38,9 +38,7 @@ const Ultra = ({ cache }: { cache: Cache }) => {
         >
           Examples
         </Link>
-        <Suspense fallback={null}>
-          <GitHub />
-        </Suspense>
+        <GitHub />
       </nav>
       <section>
         <Switch>
