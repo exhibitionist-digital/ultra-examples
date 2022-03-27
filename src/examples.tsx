@@ -48,5 +48,5 @@ export default Examples;
 
 export const fetcher = (slug: string) =>
   fetch(
-    `https://ultrajs.dev/api/examples`,
+    `./api/examples`,
   ).then((data) => data.json());
