@@ -1,0 +1,12 @@
+export default () => {
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const content =
+    '<p><strong>Ultra</strong> is a web framework that leans hard into your browser\'s native features. Embrace the future of <strong>ES Modules</strong>, <strong>Import Maps</strong>, and <strong>Web Streams</strong>. All while supporting some of the non-standards that many normal people love for some reason (<strong>JSX</strong> and <strong>TypeScript</strong>).</p>\n<h3 id="platform-native">Platform native</h3>\n<p><strong>Ultra</strong> serves your project as native <strong>ESM</strong>. Where we are going, there is no bundling.</p>\n<h3 id="typescript-and-tsxjsx">TypeScript and tsx/jsx</h3>\n<p>We know that everyone likes to be as safe as possible these days... That\'s why you can write your entire application with <strong>TypeScript</strong> and <strong>tsx</strong>. Or if you prefer, <strong>jsx</strong> works fine too.</p>\n<h3 id="cutting-edge-streams">Cutting edge streams</h3>\n<p>Utlising the new <a href="https://github.com/reactwg/react-18/discussions/37" target="_blank" rel="nofollow">React Stream Renderer</a>. We send your page content (as it resolves) through a web stream.</p>\n<h3 id="ssr-suspense-data-fetching">SSR Suspense data fetching</h3>\n<p>By far the most exciting thing for us is fetching data using <strong>Suspense</strong> <em>anywhere</em> in your app, while still retaining <strong>SSR</strong>. No opinionated and limited data flow structure to have to remember.</p>\n<h3 id="module-preload-headers">Module preload headers</h3>\n<p>The <strong>Ultra</strong> server generates graphs of both your remote and local dependencies. These get sent to the browser in <strong>link</strong> <strong>preloadmodule</strong> headers -- which mean dependencies and project ESM download quickly and concurrently.</p>\n<h3 id="lazy-routing">Lazy routing</h3>\n<p>Stop poking at your file system. We believe in freedom of choice in how you structure your application. Do you actually <em>want</em> a <strong>pages</strong> directory? Well, there\'s nothing stopping you from making one... (or not)</p>\n<h3 id="powered-by-deno">Powered by Deno™</h3>\n<p>1st class support for Deno Deploy utilising <a href="https://deno.com/blog/deploy-static-files#github-integration" target="_blank" rel="nofollow">GitHub Actions</a>.</p>';
+
+  const body = JSON.stringify({ content });
+
+  return new Response(body, { headers });
+};

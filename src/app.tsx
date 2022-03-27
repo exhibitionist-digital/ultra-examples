@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import useSWR, { SWRConfig } from "swr";
-import { Link, Route, Switch } from "wouter";
+import { SWRConfig } from "swr";
+import { Link, Route, Switch, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
 import ultraCache from "ultra/cache";
 import Page from "./page.tsx";
@@ -17,6 +17,7 @@ const options = (cache: Cache) => ({
 });
 
 const Ultra = ({ cache }: { cache: Cache }) => {
+  const [location] = useLocation();
   return (
     <SWRConfig value={options(cache)}>
       <Meta />
@@ -28,13 +29,13 @@ const Ultra = ({ cache }: { cache: Cache }) => {
         </div>
       </section>
       <nav>
-        <Link href="/">
+        <Link href="/" className={location == "/" ? "active" : ""}>
           About
         </Link>
-        <Link href="/docs">
-          Docs
-        </Link>
-        <Link href="/examples">
+        <Link
+          href="/examples"
+          className={location == "/examples" ? "active" : ""}
+        >
           Examples
         </Link>
         <Suspense fallback={null}>

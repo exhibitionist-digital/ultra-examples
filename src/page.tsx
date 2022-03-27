@@ -30,5 +30,5 @@ export default Page;
 
 export const fetcher = (slug: string) =>
   fetch(
-    `https://d1vbyel82rxsrf.cloudfront.net${slug}`,
+    `./api${slug}`,
   ).then((data) => data.json());
