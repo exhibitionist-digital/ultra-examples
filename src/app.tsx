@@ -38,7 +38,6 @@ const Ultra = ({ cache }: { cache: Cache }) => {
         >
           Examples
         </Link>
-        <GitHub />
       </nav>
       <section>
         <Switch>
