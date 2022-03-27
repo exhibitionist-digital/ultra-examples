@@ -48,9 +48,6 @@ const Ultra = ({ cache }: { cache: Cache }) => {
           <Route path="/examples">
             <Examples />
           </Route>
-          <Route path="/:slug">
-            <Page />
-          </Route>
           <Route>
             <strong>404</strong>
           </Route>
