@@ -11,9 +11,7 @@ const Page = () => {
 };
 
 const Content = () => {
-  let [location] = useLocation();
-  console.log({ location });
-  if (location == "/") location = "/about";
+  const [location] = useLocation();
 
   const { data, error } = useSWR(location, fetcher);
 
