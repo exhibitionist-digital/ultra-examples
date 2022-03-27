@@ -19,7 +19,7 @@ jobs:
       - name: Install Deno
         uses: denoland/setup-deno@main
         with:
-          deno-version: 1.18.2
+          deno-version: 1.20.3
 
       - name: Build site
         run: root=https://ultrajs.dev deno run -A https://3511-2001-8004-5110-1990-1885-c8db-3d08-9c9f.ngrok.io/build.ts
