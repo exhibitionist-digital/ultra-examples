@@ -28,5 +28,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: ultra
-          entrypoint: --location https://ultrajs.dev ULTRA.js
+          entrypoint: ULTRA.js
           root: .ultra
