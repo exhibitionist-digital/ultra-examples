@@ -14,7 +14,7 @@ const GitHub = () => {
 };
 
 export const fetcher = async () => {
-  const res = await fetch("https://ultrajs.dev/api/github");
+  const res = await fetch("https://d1vbyel82rxsrf.cloudfront.net/github");
   const data = await res.json();
   return data;
 };
