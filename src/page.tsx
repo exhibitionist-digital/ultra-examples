@@ -11,11 +11,10 @@ const Page = () => {
 };
 
 const Content = () => {
-  const [location] = useLocation();
+  let [location] = useLocation();
+  if (location == "/") location = "/about";
 
   const { data, error } = useSWR(location, fetcher);
-
-  console.log({ data, error });
 
   if (error || !data?.content) return <strong>404</strong>;
 
@@ -31,5 +30,5 @@ export default Page;
 
 export const fetcher = (slug: string) =>
   fetch(
-    `https://ultrajs.dev/api/about`,
+    `https://d1vbyel82rxsrf.cloudfront.net/about`,
   ).then((data) => data.json());
