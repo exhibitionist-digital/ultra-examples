@@ -17,6 +17,8 @@ const Content = () => {
 
   const { data, error } = useSWR(location, fetcher);
 
+  console.log({ data, error });
+
   if (error || !data?.content) return <strong>404</strong>;
 
   return (
