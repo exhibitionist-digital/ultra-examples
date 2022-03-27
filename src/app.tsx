@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { SWRConfig } from "swr";
 import { Link, Route, Switch, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
 import ultraCache from "ultra/cache";
 import Page from "./page.tsx";
+import GitHub from "./github.tsx";
 import Examples from "./examples.tsx";
 import { Cache } from "https://deno.land/x/ultra/src/types.ts";
 
@@ -37,6 +38,9 @@ const Ultra = ({ cache }: { cache: Cache }) => {
         >
           Examples
         </Link>
+        <Suspense fallback={null}>
+          <GitHub />
+        </Suspense>
       </nav>
       <section>
         <Switch>
@@ -45,6 +49,9 @@ const Ultra = ({ cache }: { cache: Cache }) => {
           </Route>
           <Route path="/examples">
             <Examples />
+          </Route>
+          <Route path="/:slug">
+            <Page />
           </Route>
           <Route>
             <strong>404</strong>
