@@ -4,7 +4,7 @@
     "start": "deno run -A --location http://localhost:8000/ --no-check --unstable server.ts",
     "cache": "deno cache --reload --no-check https://8337-2001-8004-14a0-2eaa-5962-1211-3b54-a3ea.ngrok.io/build.ts",
     "vendor": "importMap=importMap.json deno run -A --unstable https://8337-2001-8004-14a0-2eaa-5962-1211-3b54-a3ea.ngrok.io/vendor.ts",
-    "build": "disableStreaming=1 deno run -A https://8337-2001-8004-14a0-2eaa-5962-1211-3b54-a3ea.ngrok.io/build.ts"
+    "build": "deno run -A https://8337-2001-8004-14a0-2eaa-5962-1211-3b54-a3ea.ngrok.io/build.ts"
   },
   "importMap": "importMap.json",
   "lint": {
