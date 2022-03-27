@@ -1,0 +1,20 @@
+{
+  "tasks": {
+    "dev": "mode=dev deno run -A --no-check --unstable server.ts",
+    "start": "deno run -A --no-check --unstable server.ts",
+    "cache": "deno cache --reload --no-check server.ts",
+    "vendor": "importMap=importMap.json deno run -A --unstable https://3511-2001-8004-5110-1990-1885-c8db-3d08-9c9f.ngrok.io/vendor.ts",
+    "build": "deno run -A https://3511-2001-8004-5110-1990-1885-c8db-3d08-9c9f.ngrok.io/build.ts"
+  },
+  "importMap": "importMap.json",
+  "lint": {
+    "files": {
+      "exclude": [".ultra/"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "exclude": [".ultra/"]
+    }
+  }
+}

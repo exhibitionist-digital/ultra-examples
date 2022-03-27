@@ -1,11 +1,11 @@
 {
   "imports": {
     "react": "https://esm.sh/react@rc",
-    "react-dom": "https://esm.sh/react-dom@rc?deps=react@rc",
-    "react-dom/server": "https://esm.sh/react-dom@rc/server?deps=react@rc",
-    "react-helmet": "https://esm.sh/react-helmet-async@1.2.2?deps=react@rc",
-    "wouter": "https://esm.sh/wouter@2.8.0-alpha.2?deps=react@rc",
-    "swr": "https://esm.sh/swr@1.2.1?deps=react@rc",
+    "react-dom": "https://esm.sh/react-dom@rc",
+    "react-dom/server": "https://esm.sh/react-dom@rc/server",
+    "react-helmet": "https://esm.sh/react-helmet-async?deps=react@rc",
+    "wouter": "https://esm.sh/wouter?deps=react@rc",
+    "swr": "https://esm.sh/swr?deps=react@rc",
     "ultra/cache": "https://deno.land/x/ultra@v0.7.6/cache.js",
     "app": "./src/app.tsx"
   }
