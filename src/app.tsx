@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { SWRConfig } from "swr";
 import { Link, Route, Switch, useLocation } from "wouter";
 import { Helmet } from "react-helmet";

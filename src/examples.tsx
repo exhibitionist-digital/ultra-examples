@@ -48,5 +48,5 @@ export default Examples;
 
 export const fetcher = (slug: string) =>
   fetch(
-    `https://ultrajs.dev/api/examples`,
+    `https://d1vbyel82rxsrf.cloudfront.net/examples`,
   ).then((data) => data.json());
