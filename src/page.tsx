@@ -30,5 +30,5 @@ export default Page;
 
 export const fetcher = (slug: string) =>
   fetch(
-    `https://d1vbyel82rxsrf.cloudfront.net/about`,
+    `https://ultrajs.dev/api/about`,
   ).then((data) => data.json());
