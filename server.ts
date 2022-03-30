@@ -1,6 +1,3 @@
-import ultra from "https://deno.land/x/ultra@v0.7.4/mod.ts";
-import importmap from "./importmap.json" assert { type: "json" };
+import ultra from "https://deno.land/x/ultra@v0.8.0/mod.ts";
 
-await ultra({
-  importmap,
-});
+await ultra();
