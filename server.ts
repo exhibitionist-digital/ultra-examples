@@ -1,3 +1,3 @@
-import ultra from "https://3511-2001-8004-5110-1990-1885-c8db-3d08-9c9f.ngrok.io/mod.ts";
+import ultra from "https://deno.land/x/ultra@v0.8.0/mod.ts";
 
 await ultra();
