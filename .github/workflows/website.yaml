@@ -19,13 +19,14 @@ jobs:
       - name: Install Deno
         uses: denoland/setup-deno@main
         with:
-          deno-version: 1.18.2
+          deno-version: 1.20.3
 
       - name: Build site
-        run: root=https://ultra-web3.deno.dev deno run -A https://deno.land/x/ultra@v0.7.0/src/deno/build.ts
+        run: root=https://ultra-web3.deno.dev deno run -A https://deno.land/x/ultra/build.ts
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: ultra-web3
-          entrypoint: .ultra/ULTRA.js
+          entrypoint: ULTRA.js
+          root: .ultra
