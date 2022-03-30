@@ -22,7 +22,7 @@ jobs:
           deno-version: 1.20.3
 
       - name: Build site
-        run: root=https://react-18.deno.dev deno run -A https://deno.land/x/ultra@v0.8.0/src/deno/build.ts
+        run: root=https://react-18.deno.dev deno run -A https://deno.land/x/ultra@v0.8.0/build.ts
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
