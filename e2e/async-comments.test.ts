@@ -1,8 +1,5 @@
-import puppeteer from "https://deno.land/x/puppeteer@9.0.2/mod.ts";
-import {
-  assertEquals,
-  fail,
-} from "https://deno.land/std@0.130.0/testing/asserts.ts";
+import puppeteer from "puppeteer";
+import { assertEquals, fail } from "asserts";
 
 Deno.test("Should display all async rendered comments on react-18 example app", async () => {
   const expected_comments = [
@@ -11,7 +8,6 @@ Deno.test("Should display all async rendered comments on react-18 example app", 
     "I like marshmallows",
   ];
   const browser = await puppeteer.launch({
-    executablePath: Deno.env.get("chrome_path"),
     headless: true,
   });
   const page = await browser.newPage();

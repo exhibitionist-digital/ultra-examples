@@ -1,14 +1,10 @@
-import puppeteer from "https://deno.land/x/puppeteer@9.0.2/mod.ts";
-import {
-  assertEquals,
-  fail,
-} from "https://deno.land/std@0.130.0/testing/asserts.ts";
+import puppeteer from "puppeteer";
+import { assertEquals, fail } from "asserts";
 
 Deno.test("Should render home page of react-18 example app", async () => {
   const expected = "Hello world";
   const selector = "article h1";
   const browser = await puppeteer.launch({
-    executablePath: Deno.env.get("chrome_path"),
     headless: true,
   });
   const page = await browser.newPage();
