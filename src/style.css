@@ -191,7 +191,7 @@ code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 90%;
   display: inline-block;
-  padding: 0.2em 0.5em;
+  padding: 0em 0.5em;
   background: #6666ff;
   border-radius: 0.5em;
 }
