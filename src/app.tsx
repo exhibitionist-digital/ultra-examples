@@ -85,6 +85,24 @@ const Meta = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:title" content="Ultra" />
       <meta property="twitter:image" content={img} />
+      <link
+        rel="preload"
+        href="https://d1vbyel82rxsrf.cloudfront.net/examples"
+        as="fetch"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="https://d1vbyel82rxsrf.cloudfront.net/about"
+        as="fetch"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="https://d1vbyel82rxsrf.cloudfront.net/docs"
+        as="fetch"
+        crossOrigin="anonymous"
+      />
     </Helmet>
   );
 };
