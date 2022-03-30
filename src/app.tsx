@@ -32,6 +32,9 @@ const Ultra = ({ cache }: { cache: Cache }) => {
         <Link href="/" className={location == "/" ? "active" : ""}>
           About
         </Link>
+        <Link href="/docs" className={location == "/docs" ? "active" : ""}>
+          Docs
+        </Link>
         <Link
           href="/examples"
           className={location == "/examples" ? "active" : ""}
