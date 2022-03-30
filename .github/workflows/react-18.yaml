@@ -28,4 +28,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: react-18
-          entrypoint: .ultra/ULTRA.js
+          entrypoint: ULTRA.js
+          root: ./ultra
