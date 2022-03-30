@@ -14,4 +14,4 @@
 
 ### Quickstart
 
-Clone this repo and run `make`. Requires Deno.
+Clone this repo and run `deno task dev`. Requires Deno.
