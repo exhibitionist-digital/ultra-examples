@@ -1,0 +1,12 @@
+{
+  "imports": {
+    "react": "./.ultra/x/8019d3a387fc605e2224a5a411ef77ba5c20f6880f0c3934c01c46d0cfd39137.js",
+    "react-dom": "./.ultra/x/1a2d0c9556addef8f0167b2c268530e9e5638d1508d6026db39324f0a1fcea50.js",
+    "react-dom/server": "./.ultra/x/3256bf14ee2350732ea8b459d4821901b59a4077ba3958b6f3980d5121f5d68f.js",
+    "react-helmet": "./.ultra/x/a4f998fa0e9c738d1e2ba57897e9d439feaaca97430b09224ea4fe026e7ddb74.js",
+    "wouter": "./.ultra/x/ae3ce75a356e127ed9094ce982932b4f6e0c310f6bfce2d8f2219ddd3e212353.js",
+    "swr": "./.ultra/x/0e1a2bd65b0e295cf92969d914fc234d7b3ada1e881789aea06590a8b4bd833f.js",
+    "ultra/cache": "./.ultra/x/7f8ee17ccfb3c648d26cbe504a2c3c905049db08e157ad23bf100c971af9a133.js",
+    "app": "./src/app.tsx"
+  }
+}

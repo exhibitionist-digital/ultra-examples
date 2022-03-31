@@ -3,7 +3,18 @@
     "dev": "mode=dev deno run -A --no-check --unstable server.ts",
     "start": "deno run -A --no-check --unstable server.ts",
     "cache": "deno cache --reload --no-check server.ts",
+    "vendor": "importMap=importMap.json deno run -A --unstable https://deno.land/x/ultra/vendor.ts",
     "e2e": "deno test --unstable -A"
   },
-  "importMap": "importmap.json"
+  "importMap": "importMap.json",
+  "lint": {
+    "files": {
+      "exclude": [".ultra/"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "exclude": [".ultra/"]
+    }
+  }
 }
