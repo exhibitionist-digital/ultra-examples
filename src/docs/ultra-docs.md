@@ -10,9 +10,10 @@
 
 ### Quickstart
 
-Clone this [repo](https://github.com/exhibitionist-digital/ultra-examples) and run `deno task dev`. See how you go.
+Clone this [repo](https://github.com/exhibitionist-digital/ultra-examples) and run `deno task dev` and then browse to [https://localhost:8000](https://localhost:8000)
 
-More examples on the following branches: `react-18` `three-js` `web3`
+
+More examples are found in the following branches in the ultra-examples repo: `react-18`, `three-js`, `web3`
 
 ---
 
@@ -20,28 +21,24 @@ More examples on the following branches: `react-18` `three-js` `web3`
 
 This is the bare minimum for an **Ultra** project.
 
-```bash
-- server.ts
-- src/app.tsx
-- importMap.json
-- deno.json
-```
-
-You can run the project with `deno run -A --importmap importmap.json --no-check server.ts` 
-
-> Note: At the time of writing, the published types for React point to `v17`. Which is why we need to use `--no-check` when running the Ultra server.
+- [server.ts](#serverts)
+- [src/app.tsx](#srcapptsx)
+- [importMap.json](#importmapjson)
+- [deno.json](#denojson)
 
 #### server.ts
 
+This code runs Ultra's server:
+
 ```javascript
-import ultra from "https://ultra.land/x/ultra/mod.ts";
+import ultra from "https://deno.land/x/ultra/mod.ts";
 
 await ultra();
 ```
 
 #### importMap.json
 
-Here we include the dependencies of the project.
+Here we include the dependencies of the project:
 
 ```javascript
 {
@@ -58,7 +55,7 @@ Here we include the dependencies of the project.
 }
 ```
 
-The above imports are all required to run **Ultra**. You can add other dependencies here, and use them with a standard bare import specifier in your project.
+The above imports are all required to run **Ultra**. You can add other dependencies here, and use the import keys as an import alias in your project code ([see import maps section in the Deno manual](https://deno.land/manual/linking_to_external_code/import_maps)).
 
 `app` is the entry point to your application. It can live anywhere in the `src` directory. It can be `jsx` or `tsx`.
 
@@ -102,7 +99,9 @@ export default const Ultra = ({ cache }: { cache: Cache }) => {
 };
 ```
 
-> Note: File extensions are important. Always include `.tsx`/`.jsx` in your import statements.
+> Note:
+1. File extensions are important. Always include `.tsx`/`.jsx` in your import statements.
+2. The `ultraCache` function populates the server-side cache and rehydrates the client-side cache. It is not needed unless you are using Suspense or SWR.
 
 #### deno.json
 
@@ -111,24 +110,21 @@ Using the native [Deno config](https://deno.land/manual/getting_started/configur
 ```javascript
 {
   "tasks": {
-    "dev": "mode=dev deno run -A --no-check --unstable server.js",
-    "start": "deno run -A --no-check --unstable server.js",
-    "cache": "deno cache --reload --no-check server.js",
+    "dev": "mode=dev deno run -A --unstable server.js",
+    "start": "deno run -A --unstable server.js",
+    "cache": "deno cache --reload server.js",
     "vendor": "importMap=importMap.json deno run -A --unstable https://deno.land/x/ultra/vendor.ts",
   },
   "importMap": "importMap.json"
 }
 ```
-
 ---
 
 ### Suspense data fetching
 
-Vercel's [SWR](https://github.com/vercel/swr) lets us fetch data anywhere in our components, works with Suspense.
+Vercel's [SWR](https://github.com/vercel/swr) lets us fetch data anywhere in our components and works with Suspense. **Ultra** uses the brand new **SWR 1.0.0+**.
 
-**Ultra** uses the brand new **SWR 1.0.0+**. We have a custom cache which allows building of a cache server side, and repopulating on client side.
-
-All **SWR** options are supported: [SWR docs](https://swr.vercel.app/docs/options#options)
+All **SWR** options are supported [SWR docs](https://swr.vercel.app/docs/options#options).
 
 ```javascript
 import { SWRConfig } from "swr";
@@ -152,9 +148,9 @@ const Ultra = ({ cache }) => {
 
 ### Routing
 
-Powered by [Wouter](https://github.com/molefrog/wouter). **Wouter** is a fully-featured, tiny (1.36 KB), and best React router that we've ever used. **Ultra** comes with a server side integration which allows full functionality of **Wouter**.
+Powered by [Wouter](https://github.com/molefrog/wouter). **Wouter** is fully-featured, tiny (1.36 KB), and the best React router that we've ever used. **Ultra** comes with a server side integration which allows full functionality of **Wouter**.
 
-All **Wouter** hooks and functionality is supported: [Wouter docs](https://github.com/molefrog/wouter#wouter-api)
+All **Wouter** hooks and functionality is supported [Wouter docs](https://github.com/molefrog/wouter#wouter-api).
 
 ```javascript
 import React, { Suspense } from "react";
@@ -175,7 +171,7 @@ const App = () => {
 
 ### Head
 
-Powered by [react-helmet-async](https://github.com/staylor/react-helmet-async).
+Powered by [react-helmet-async](https://github.com/staylor/react-helmet-async). It is used to add markup to the `html` `<head>` element such as `<title>`, `<meta>` and `<link>` tags.
 
 ```javascript
 import React from "react";
@@ -194,7 +190,7 @@ const App = () => {
 
 ### Vendoring
 
-During development, it's helpful to utilise CDNs like `esm.sh`, `unpkg.com`, and `deno.land/x` to serve your projects dependencies. When deploying to production, you may want to forego the CDNs and serve your dependencies locally. We have a script for doing just this.
+During development, it's helpful to utilise CDNs like `esm.sh`, `unpkg.com`, and `deno.land/x` to serve your projects dependencies. When deploying to production, you may want to forego the CDNs and serve your dependencies locally. We have a script for doing this encapsulated in the `vendor` task defined in `deno.json`:
 
 ```bash
 importMap=importMap.json deno run -A --unstable https://deno.land/x/ultra/vendor.ts
@@ -210,7 +206,7 @@ This will download a complete graph of your dependencies to a `.ultra/x` directo
 
 #### With Deno Deploy
 
-Now supporting the official [Deno GitHub Action](https://deno.com/blog/deploy-static-files)!
+**Ultra** supports the official [Deno Deploy GitHub Action](https://deno.com/blog/deploy-static-files)!
 
 1. Create a project in the Deno Deploy Dashboard
 2. Select `GitHub Action` integration
@@ -259,7 +255,7 @@ jobs:
 
 ```bash
 FROM denoland/deno:1.20.3
-EXPOSE 8000 
+EXPOSE 8000
 WORKDIR /ultra
 COPY . .
 RUN deno task cache
