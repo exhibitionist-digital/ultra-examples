@@ -75,7 +75,7 @@ const Meta = () => {
     <Helmet>
       <title>Ultra: Deno + React</title>
       <meta name="description" content={desc} />
-      <link rel="stylesheet" href="/style.css" />
+      <link rel="stylesheet" href="/style.css?v=2" />
       <link rel="icon" href="/ultra.svg"></link>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
