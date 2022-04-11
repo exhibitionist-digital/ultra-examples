@@ -2,7 +2,7 @@
   "deno.enable": true,
   "deno.lint": true,
   "deno.unstable": true,
-  "deno.importMap": "./importmap.json",
+  "deno.importMap": "./importMap.json",
   "deno.suggest.imports.hosts": {
     "https://deno.land": false
   }

@@ -21,46 +21,47 @@ const Ultra = ({ cache }: { cache: Cache }) => {
   return (
     <SWRConfig value={options(cache)}>
       <Meta />
-      <section className="flex">
-        <img src="/ultra.svg" width="100" height="100" alt="ultra" />
-        <div style={{ margin: "1em 0 1em" }}>
-          <h1>ULTRA</h1>
-          <h2>Modern Streaming React Framework</h2>
+      <nav className="flex">
+        <Link href="/" className="logo">
+          <img src="/ultra.svg" width="50" height="50" alt="Ultra logo" />
+          <h3>Ultra</h3>
+        </Link>
+        <div>
+          <Link href="/docs" className={location == "/docs" ? "active" : ""}>
+            Docs
+          </Link>
+          <Link
+            href="/examples"
+            className={location == "/examples" ? "active" : ""}
+          >
+            Examples
+          </Link>
         </div>
-      </section>
-      <nav>
-        <Link href="/" className={location == "/" ? "active" : ""}>
-          About
-        </Link>
-        <Link href="/docs" className={location == "/docs" ? "active" : ""}>
-          Docs
-        </Link>
-        <Link
-          href="/examples"
-          className={location == "/examples" ? "active" : ""}
-        >
-          Examples
-        </Link>
-        <Suspense fallback={null}>
-          <GitHub />
-        </Suspense>
+        <div>
+          <Suspense fallback={null}>
+            <GitHub />
+          </Suspense>
+        </div>
       </nav>
-      <section>
-        <Switch>
-          <Route path="/">
-            <Page />
-          </Route>
-          <Route path="/examples">
-            <Examples />
-          </Route>
-          <Route path="/:slug">
-            <Page />
-          </Route>
-          <Route>
-            <strong>404</strong>
-          </Route>
-        </Switch>
-      </section>
+
+      <Switch>
+        <Route path="/">
+          <section className="hero">
+            <img src="/clouds-1.webp" alt="Clouds at sunset." />
+            <img src="/clouds-2.webp" alt="Clouds in a clear blue sky." />
+            <h1>un-bundle the web</h1>
+          </section>
+        </Route>
+        <Route path="/examples">
+          <Examples />
+        </Route>
+        <Route path="/:slug">
+          <Page />
+        </Route>
+        <Route>
+          <strong>404</strong>
+        </Route>
+      </Switch>
     </SWRConfig>
   );
 };
@@ -68,32 +69,27 @@ const Ultra = ({ cache }: { cache: Cache }) => {
 export default Ultra;
 
 const Meta = () => {
-  const img = "https://ultrajs.dev/ultra.jpg";
-  const desc = "💎 Modern Streaming React Framework";
+  const img = "https://ultrajs.dev/ultra-share.jpg";
+  const title = "Ultra: Un-bundle the web";
+  const desc = "Modern Streaming React Framework";
   return (
     <Helmet>
-      <title>Ultra: Deno + React</title>
+      <title>{title}</title>
       <meta name="description" content={desc} />
-      <link rel="stylesheet" href="/style.css" />
+      <link rel="stylesheet" href="/style.css?v=2" />
       <link rel="icon" href="/ultra.svg"></link>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta property="og:title" content="Ultra" />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={desc} />
       <meta property="og:image" content={img} />
       <meta property="og:url" content="https://ultrajs.dev" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content="Ultra" />
+      <meta property="twitter:title" content={title} />
       <meta property="twitter:image" content={img} />
       <link
         rel="preload"
         href="https://d1vbyel82rxsrf.cloudfront.net/examples"
-        as="fetch"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="https://d1vbyel82rxsrf.cloudfront.net/about"
         as="fetch"
         crossOrigin="anonymous"
       />
