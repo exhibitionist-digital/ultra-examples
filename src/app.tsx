@@ -23,7 +23,7 @@ const Ultra = ({ cache }: { cache: Cache }) => {
       <Meta />
       <nav className="flex">
         <Link href="/" className="logo">
-          <img src="/ultra.svg" width="50" height="50" alt="ultra" />
+          <img src="/ultra.svg" width="50" height="50" alt="Ultra logo" />
           <h3>Ultra</h3>
         </Link>
         <div>
