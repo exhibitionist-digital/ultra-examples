@@ -41,8 +41,6 @@ nav a {
   margin: 0.5em 0.25em 0.5em;
   border-radius: 2em;
   transition: color 0.2s;
-  opacity: 0;
-  animation: fadein 3s forwards;
 }
 
 nav a:nth-of-type(2) {
@@ -248,12 +246,6 @@ a {
 
 a:hover {
   color: #ff3399;
-}
-
-@keyframes fadein {
-  to {
-    opacity: 1;
-  }
 }
 
 code {
