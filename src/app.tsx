@@ -70,21 +70,22 @@ export default Ultra;
 
 const Meta = () => {
   const img = "https://ultrajs.dev/ultra-share.jpg";
-  const desc = "Modern Streaming React Framework: Un-bundle the web";
+  const title = "Ultra: Un-bundle the web";
+  const desc = "Modern Streaming React Framework";
   return (
     <Helmet>
-      <title>Ultra: Deno + React</title>
+      <title>{title}</title>
       <meta name="description" content={desc} />
       <link rel="stylesheet" href="/style.css?v=2" />
       <link rel="icon" href="/ultra.svg"></link>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta property="og:title" content="Ultra" />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={desc} />
       <meta property="og:image" content={img} />
       <meta property="og:url" content="https://ultrajs.dev" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content="Ultra" />
+      <meta property="twitter:title" content={title} />
       <meta property="twitter:image" content={img} />
       <link
         rel="preload"
