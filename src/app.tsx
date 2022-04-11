@@ -70,7 +70,7 @@ export default Ultra;
 
 const Meta = () => {
   const img = "https://ultrajs.dev/ultra-share.jpg";
-  const desc = "💎 Modern Streaming React Framework";
+  const desc = "Modern Streaming React Framework: Un-bundle the web";
   return (
     <Helmet>
       <title>Ultra: Deno + React</title>
