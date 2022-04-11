@@ -69,7 +69,7 @@ const Ultra = ({ cache }: { cache: Cache }) => {
 export default Ultra;
 
 const Meta = () => {
-  const img = "https://ultrajs.dev/ultra.jpg";
+  const img = "https://ultrajs.dev/ultra-share.jpg";
   const desc = "💎 Modern Streaming React Framework";
   return (
     <Helmet>
