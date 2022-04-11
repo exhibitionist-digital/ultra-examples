@@ -4,35 +4,31 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+html,
+body,
+#ultra {
+  height: 100%;
 }
 
 body {
   max-width: 1200px;
   margin: auto;
-  padding-bottom: 50vmin;
 }
 
-nav {
-  padding: 0.5em 2em 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 400px;
-  overflow: auto;
+main {
+  margin: 0 2em;
 }
 
 .container ::-webkit-scrollbar {
   display: none;
 }
 
-@media only screen and (min-width: 600px) {
-  nav {
-    padding: 2em 2em 0 2em;
-    justify-content: left;
-  }
+nav div:first-of-type {
+  padding: 0 0 0 1em;
 }
 
 nav a {
@@ -42,7 +38,7 @@ nav a {
   text-decoration: none;
   color: currentColor;
   white-space: nowrap;
-  margin: 0.5em 0.5em 0.5em 0;
+  margin: 0.5em 0.25em 0.5em;
   border-radius: 2em;
   transition: color 0.2s;
   opacity: 0;
@@ -63,7 +59,6 @@ nav a:nth-of-type(4) {
 
 nav a:focus {
   outline: none;
-  box-shadow: 0 0 2em #333;
 }
 
 nav a:hover,
@@ -74,32 +69,106 @@ nav a.active {
 
 section {
   text-align: left;
-  padding: 2em 2em 0 2em;
-
   margin: auto;
 }
 
-.flex {
+.flex,
+.logo {
   display: flex;
   align-items: center;
+  justify-content: left;
   flex-wrap: wrap;
 }
 
-section img {
-  max-width: 160px;
+.logo {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  justify-content: left;
+  flex: 1 1 100%;
+}
+
+@media (min-width: 600px) {
+  .flex {
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 1em;
+    box-sizing: border-box;
+  }
+  .logo {
+    flex: inherit;
+  }
+}
+
+.manifesto {
+  max-width: 800px;
+  margin: auto;
+}
+
+.manifesto h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 2em 0 0.2em;
+}
+
+section.hero {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin: 4em 0;
+  padding: 0 1em;
+}
+
+@media (orientation: landscape) {
+  section.hero img {
+    aspect-ratio: 6/4;
+    object-fit: cover;
+    max-width: 40vw;
+  }
+}
+
+@media (orientation: portrait) {
+  section.hero img {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    max-width: 40vw;
+  }
+}
+
+section.hero img:first-of-type {
+  position: relative;
+  top: -2em;
+}
+
+section.hero img:last-of-type {
+  position: relative;
+  top: 2em;
+}
+
+section.hero h1 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0%;
+  font-weight: 600;
+  width: 100%;
+  font-size: clamp(2em, 10vw, 8em);
+  text-align: center;
+}
+
+nav.flex img {
+  max-width: 90px;
   width: 100%;
   height: auto;
   display: block;
-  margin: 0 2em 0 0;
-  border: 2px solid white;
-  border-radius: 2em;
-  box-shadow: 0 0 2em #555;
+  margin: 0 0em 0 0;
 }
 
-section h1 {
-  font-size: 4em;
+nav h3 {
+  font-size: 30px;
   font-weight: 600;
   margin: 0;
+  padding: 0;
 }
 
 section h2 {

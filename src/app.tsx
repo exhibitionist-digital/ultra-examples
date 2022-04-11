@@ -21,46 +21,47 @@ const Ultra = ({ cache }: { cache: Cache }) => {
   return (
     <SWRConfig value={options(cache)}>
       <Meta />
-      <section className="flex">
-        <img src="/ultra.svg" width="100" height="100" alt="ultra" />
-        <div style={{ margin: "1em 0 1em" }}>
-          <h1>ULTRA</h1>
-          <h2>Modern Streaming React Framework</h2>
+      <nav className="flex">
+        <Link href="/" className="logo">
+          <img src="/ultra.svg" width="50" height="50" alt="ultra" />
+          <h3>Ultra</h3>
+        </Link>
+        <div>
+          <Link href="/docs" className={location == "/docs" ? "active" : ""}>
+            Docs
+          </Link>
+          <Link
+            href="/examples"
+            className={location == "/examples" ? "active" : ""}
+          >
+            Examples
+          </Link>
         </div>
-      </section>
-      <nav>
-        <Link href="/" className={location == "/" ? "active" : ""}>
-          About
-        </Link>
-        <Link href="/docs" className={location == "/docs" ? "active" : ""}>
-          Docs
-        </Link>
-        <Link
-          href="/examples"
-          className={location == "/examples" ? "active" : ""}
-        >
-          Examples
-        </Link>
-        <Suspense fallback={null}>
-          <GitHub />
-        </Suspense>
+        <div>
+          <Suspense fallback={null}>
+            <GitHub />
+          </Suspense>
+        </div>
       </nav>
-      <section>
-        <Switch>
-          <Route path="/">
-            <Page />
-          </Route>
-          <Route path="/examples">
-            <Examples />
-          </Route>
-          <Route path="/:slug">
-            <Page />
-          </Route>
-          <Route>
-            <strong>404</strong>
-          </Route>
-        </Switch>
-      </section>
+
+      <Switch>
+        <Route path="/">
+          <section className="hero">
+            <img src="/clouds-1.webp" />
+            <img src="/clouds-2.webp" />
+            <h1>un-bundle the web</h1>
+          </section>
+        </Route>
+        <Route path="/examples">
+          <Examples />
+        </Route>
+        <Route path="/:slug">
+          <Page />
+        </Route>
+        <Route>
+          <strong>404</strong>
+        </Route>
+      </Switch>
     </SWRConfig>
   );
 };
@@ -88,12 +89,6 @@ const Meta = () => {
       <link
         rel="preload"
         href="https://d1vbyel82rxsrf.cloudfront.net/examples"
-        as="fetch"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="https://d1vbyel82rxsrf.cloudfront.net/about"
         as="fetch"
         crossOrigin="anonymous"
       />
