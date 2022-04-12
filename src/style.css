@@ -86,7 +86,7 @@ section {
   flex: 1 1 100%;
 }
 
-@media (min-width: 600px) {
+@media (orientation: landscape) {
   .flex {
     justify-content: space-between;
     width: 100%;
