@@ -47,8 +47,18 @@ const Ultra = ({ cache }: { cache: Cache }) => {
       <Switch>
         <Route path="/">
           <section className="hero">
-            <img src="/clouds-1.webp" alt="Clouds at sunset." />
-            <img src="/clouds-2.webp" alt="Clouds in a clear blue sky." />
+            <img
+              src="/clouds-1.webp"
+              alt="Clouds at sunset."
+              width="800"
+              height="600"
+            />
+            <img
+              src="/clouds-2.webp"
+              alt="Clouds in a clear blue sky."
+              width="800"
+              height="600"
+            />
             <h1>un-bundle the web</h1>
           </section>
         </Route>
