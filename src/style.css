@@ -121,7 +121,7 @@ section.hero {
   section.hero img {
     aspect-ratio: 6/4;
     object-fit: cover;
-    width: 33vw;
+    width: 40vw;
     max-width: 480px;
     height: auto;
   }
