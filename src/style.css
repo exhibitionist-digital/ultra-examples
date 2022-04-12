@@ -37,6 +37,7 @@ nav a {
   display: inline-block;
   text-decoration: none;
   color: currentColor;
+  font-size: 90%;
   white-space: nowrap;
   margin: 0.5em 0.25em 0.5em;
   border-radius: 2em;
@@ -159,7 +160,7 @@ section.hero h1 {
 }
 
 nav.flex img {
-  max-width: 90px;
+  max-width: 75px;
   width: 100%;
   height: auto;
   display: block;
