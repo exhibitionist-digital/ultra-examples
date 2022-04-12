@@ -20,7 +20,7 @@ body {
 }
 
 main {
-  margin: 0 2em;
+  margin: 2em;
 }
 
 .container ::-webkit-scrollbar {

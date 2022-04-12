@@ -61,6 +61,17 @@ const Ultra = ({ cache }: { cache: Cache }) => {
             />
             <h1>un-bundle the web</h1>
           </section>
+          <main>
+            <p>
+              <strong>Ultra</strong>{" "}
+              is a web framework that leans hard into your browser's native
+              features. Embrace the future of <strong>ES Modules</strong>,{" "}
+              <strong>Import Maps</strong>, and{" "}
+              <strong>Web Streams</strong>. All while supporting some of the
+              non-standards that many normal people love for some reason
+              (<strong>JSX</strong> and <strong>TypeScript</strong>).
+            </p>
+          </main>
         </Route>
         <Route path="/examples">
           <Examples />
