@@ -19,10 +19,10 @@ const Content = () => {
   if (error || !data?.content) return <strong>404</strong>;
 
   return (
-    <main>
+    <div>
       <div dangerouslySetInnerHTML={{ __html: data?.content }}>
       </div>
-    </main>
+    </div>
   );
 };
 

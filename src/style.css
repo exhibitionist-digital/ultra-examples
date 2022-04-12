@@ -114,7 +114,7 @@ section.hero {
   position: relative;
   justify-content: space-between;
   margin: 4em 0;
-  padding: 0 1em;
+  padding: 0;
 }
 
 @media (orientation: landscape) {
@@ -129,7 +129,7 @@ section.hero {
 
 @media (orientation: portrait) {
   section.hero img {
-    aspect-ratio: 5/6;
+    aspect-ratio: 8/9;
     object-fit: cover;
     max-width: 40vw;
     width: 100%;

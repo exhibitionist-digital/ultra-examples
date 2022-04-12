@@ -43,25 +43,25 @@ const Ultra = ({ cache }: { cache: Cache }) => {
           </Suspense>
         </div>
       </nav>
+      <main>
+        <Switch>
+          <Route path="/">
+            <section className="hero">
+              <img
+                src="/clouds-1.webp"
+                alt="Clouds at sunset."
+                width="800"
+                height="600"
+              />
+              <img
+                src="/clouds-2.webp"
+                alt="Clouds in a clear blue sky."
+                width="800"
+                height="600"
+              />
+              <h1>un-bundle the web</h1>
+            </section>
 
-      <Switch>
-        <Route path="/">
-          <section className="hero">
-            <img
-              src="/clouds-1.webp"
-              alt="Clouds at sunset."
-              width="800"
-              height="600"
-            />
-            <img
-              src="/clouds-2.webp"
-              alt="Clouds in a clear blue sky."
-              width="800"
-              height="600"
-            />
-            <h1>un-bundle the web</h1>
-          </section>
-          <main>
             <p>
               <strong>Ultra</strong>{" "}
               is a web framework that leans hard into your browser's native
@@ -69,20 +69,23 @@ const Ultra = ({ cache }: { cache: Cache }) => {
               <strong>Import Maps</strong>, and{" "}
               <strong>Web Streams</strong>. All while supporting some of the
               non-standards that many normal people love for some reason
-              (<strong>JSX</strong> and <strong>TypeScript</strong>).
+              (<strong>
+                JSX
+              </strong>{" "}
+              and <strong>TypeScript</strong>).
             </p>
-          </main>
-        </Route>
-        <Route path="/examples">
-          <Examples />
-        </Route>
-        <Route path="/:slug">
-          <Page />
-        </Route>
-        <Route>
-          <strong>404</strong>
-        </Route>
-      </Switch>
+          </Route>
+          <Route path="/examples">
+            <Examples />
+          </Route>
+          <Route path="/:slug">
+            <Page />
+          </Route>
+          <Route>
+            <strong>404</strong>
+          </Route>
+        </Switch>
+      </main>
     </SWRConfig>
   );
 };
@@ -91,7 +94,7 @@ export default Ultra;
 
 const Meta = () => {
   const img = "https://ultrajs.dev/ultra-share.jpg";
-  const title = "Ultra: Un-bundle the web";
+  const title = "Ultra: un-bundle the web";
   const desc = "Modern Streaming React Framework";
   return (
     <Helmet>

@@ -18,7 +18,7 @@ const Content = () => {
   if (error || !data?.examples) return <strong>404</strong>;
   const { examples } = data;
   return (
-    <main>
+    <div>
       {examples.map(
         (
           ex: { title: string; blurb: string; source: string; url: string },
@@ -40,7 +40,7 @@ const Content = () => {
           );
         },
       )}
-    </main>
+    </div>
   );
 };
 
