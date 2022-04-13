@@ -5,11 +5,11 @@ export default async () => {
   const headers = {
     "content-type": "application/json",
   };
-  console.log(Deno.cwd());
+
   const source = await Deno.readTextFile(
     `${Deno.cwd()}/src/mdx/ultra-docs.mdx`
   );
-  console.log({ source });
+
   const content = String(
     await compile(source, {
       outputFormat: "function-body",
