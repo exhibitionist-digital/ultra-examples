@@ -1,4 +1,4 @@
-import { compile } from "@mdx-js/compile";
+import { compile } from "mdx-js/compile";
 import rehypeHighlight from "rehype-highlight";
 
 export default async () => {

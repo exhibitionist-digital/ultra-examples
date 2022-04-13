@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import useSWR from "swr";
 import { useLocation } from "wouter";
 import * as runtime from "jsx-runtime";
-import { runSync } from "@mdx-js/run";
+import { runSync } from "mdx-js/run";
 
 const Page = () => {
   return (
