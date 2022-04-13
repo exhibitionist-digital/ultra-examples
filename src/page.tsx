@@ -22,7 +22,7 @@ const PageContent = () => {
 
 export const fetcher = () => {
   return fetch(
-    `http://localhost:8000/api/docs`,
+    `/api/docs`,
   ).then((data) => data.json());
 };
 

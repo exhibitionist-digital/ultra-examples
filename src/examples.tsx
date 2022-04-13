@@ -48,5 +48,5 @@ export default Examples;
 
 export const fetcher = (slug: string) =>
   fetch(
-    `http://localhost:8000/api/examples`,
+    `/api/examples`,
   ).then((data) => data.json());
