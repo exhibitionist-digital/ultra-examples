@@ -48,5 +48,5 @@ export default Examples;
 
 export const fetcher = (slug: string) =>
   fetch(
-    `https://d1vbyel82rxsrf.cloudfront.net/examples`,
+    `http://localhost:8000/api/examples`,
   ).then((data) => data.json());
