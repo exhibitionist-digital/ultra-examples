@@ -1,5 +1,5 @@
-import { compile } from "https://esm.sh/@mdx-js/mdx?no-check";
-import rehypeHighlight from "https://esm.sh/rehype-highlight?no-check";
+import { compile } from "@mdx-js/compile";
+import rehypeHighlight from "rehype-highlight";
 
 export default async () => {
   const headers = {

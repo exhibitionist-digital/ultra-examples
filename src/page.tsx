@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
 import useSWR from "swr";
 import { useLocation } from "wouter";
-import * as runtime from "https://esm.sh/react@v18.0.0/jsx-runtime.js";
-import { runSync } from "https://esm.sh/@mdx-js/mdx/lib/run.js?no-check";
+import * as runtime from "jsx-runtime";
+import { runSync } from "@mdx-js/run";
 
 const Page = () => {
   return (
