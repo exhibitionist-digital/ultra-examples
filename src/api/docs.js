@@ -1,5 +1,6 @@
 import { compile } from "mdx-js/compile";
 import rehypeHighlight from "rehype-highlight";
+import rehypeSlug from "rehype-slug";
 
 export default async () => {
   const headers = {
@@ -14,7 +15,7 @@ export default async () => {
     await compile(source, {
       outputFormat: "function-body",
       useDynamicImport: true,
-      rehypePlugins: [rehypeHighlight],
+      rehypePlugins: [rehypeSlug, rehypeHighlight],
     })
   );
   const body = JSON.stringify({ content });
