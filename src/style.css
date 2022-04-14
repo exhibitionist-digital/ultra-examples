@@ -234,7 +234,7 @@ h4 {
   font-size: 120%;
 }
 
-h3::before {
+h3 a::before {
   content: "🔗 ";
 }
 
