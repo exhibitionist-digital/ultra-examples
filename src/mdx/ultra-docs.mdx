@@ -8,7 +8,7 @@
 
 ---
 
-### Quickstart
+### [Quickstart](#quickstart)
 
 Clone this [repo](https://github.com/exhibitionist-digital/ultra-examples) and run `deno task dev` and then browse to [https://localhost:8000](https://localhost:8000)
 
@@ -17,7 +17,7 @@ More examples are found in the following branches in the ultra-examples repo: `r
 
 ---
 
-### Anatomy of an Ultra project
+### [Anatomy of an Ultra project](#anatomy-of-an-ultra-project)
 
 This is the bare minimum for an **Ultra** project.
 
@@ -120,7 +120,7 @@ Using the native [Deno config](https://deno.land/manual/getting_started/configur
 ```
 ---
 
-### Suspense data fetching
+### [Suspense data fetching](#suspense-data-fetching)
 
 Vercel's [SWR](https://github.com/vercel/swr) lets us fetch data anywhere in our components and works with Suspense. **Ultra** uses the brand new **SWR 1.0.0+**.
 
@@ -146,7 +146,7 @@ const Ultra = ({ cache }) => {
 
 ---
 
-### Routing
+### [Routing](#routing)
 
 Powered by [Wouter](https://github.com/molefrog/wouter). **Wouter** is fully-featured, tiny (1.36 KB), and the best React router that we've ever used. **Ultra** comes with a server side integration which allows full functionality of **Wouter**.
 
@@ -169,7 +169,7 @@ const App = () => {
 
 ---
 
-### Head
+### [Head](#head)
 
 Powered by [react-helmet-async](https://github.com/staylor/react-helmet-async). It is used to add markup to the `html` `<head>` element such as `<title>`, `<meta>` and `<link>` tags.
 
@@ -188,7 +188,7 @@ const App = () => {
 
 ---
 
-### Vendoring
+### [Vendoring](#vendoring)
 
 During development, it's helpful to utilise CDNs like `esm.sh`, `unpkg.com`, and `deno.land/x` to serve your projects dependencies. When deploying to production, you may want to forego the CDNs and serve your dependencies locally. We have a script for doing this encapsulated in the `vendor` task defined in `deno.json`:
 
@@ -202,7 +202,7 @@ This will download a complete graph of your dependencies to a `.ultra/x` directo
 
 ---
 
-### Deploying
+### [Deploying](#deploying)
 
 #### With Deno Deploy
 

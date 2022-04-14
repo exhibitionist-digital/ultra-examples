@@ -203,17 +203,21 @@ blockquote {
 }
 
 h1,
-h2 {
-  margin: 0;
-  font-size: 150%;
-  font-weight: 400;
-  margin-bottom: 0.5em;
+.logo h3 {
   background: linear-gradient(to right, #6666ff, #0099ff, #ff3399, #6666ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: rainbow_animation 6s ease-in-out infinite;
   background-size: 400% 100%;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-size: 150%;
+  font-weight: 400;
+  margin-bottom: 0.5em;
 }
 
 h3 {
@@ -223,11 +227,18 @@ h3 {
 h4 {
   font-weight: 600;
   font-size: 120%;
-  color: #ff3399;
+}
+
+h3::before {
+  content: "🔗 ";
+}
+
+h3 a {
+  text-decoration: none;
 }
 
 h4::before {
-  content: "✓ ";
+  content: "✅ ";
 }
 
 hr {
@@ -267,7 +278,7 @@ code {
   font-size: 90%;
   display: inline-block;
   padding: 0em 0.5em;
-  background: #6666ff;
+  background: #1f1f1f;
   border-radius: 0.5em;
 }
 
