@@ -235,7 +235,9 @@ h4 {
 }
 
 h3 a::before {
-  content: "🔗 ";
+  content: "# ";
+  opacity: 0.5;
+  font-weight: 200;
 }
 
 h3 a {
@@ -243,7 +245,9 @@ h3 a {
 }
 
 h4::before {
-  content: "✅ ";
+  content: "→ ";
+  opacity: 0.5;
+  font-weight: 200;
 }
 
 hr {
@@ -266,7 +270,13 @@ ol {
   padding: 0;
   margin: 0 0 2em;
   list-style-position: inside;
-  list-style-type: square;
+  list-style-type: none;
+}
+
+li::before {
+  content: "▸ ";
+  color: #ff3399;
+  font-weight: 200;
 }
 
 a {
