@@ -8,7 +8,7 @@ export default async () => {
   };
 
   const source = await Deno.readTextFile(
-    `${Deno.cwd()}/src/mdx/ultra-docs.mdx`
+    `${Deno.cwd()}/src/mdx/ultra-docs.mdx`,
   );
 
   const content = String(
@@ -16,7 +16,7 @@ export default async () => {
       outputFormat: "function-body",
       useDynamicImport: true,
       rehypePlugins: [rehypeSlug, rehypeHighlight],
-    })
+    }),
   );
   const body = JSON.stringify({ content });
   return new Response(body, { headers });
