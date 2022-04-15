@@ -280,6 +280,10 @@ li::before {
   font-weight: 200;
 }
 
+ul > li > ul > li {
+  padding-left: 2em;
+}
+
 a {
   color: inherit;
   transition: color 0.2s;
