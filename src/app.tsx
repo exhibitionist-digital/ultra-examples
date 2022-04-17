@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { SWRConfig } from "swr";
 import { Link, Route, Switch, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
@@ -18,6 +18,12 @@ const options = (cache: Cache) => ({
 
 const Ultra = ({ cache }: { cache: Cache }) => {
   const [location] = useLocation();
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      // @ts-ignore sw not in navigator for some reason?
+      navigator.serviceWorker.register("/service-worker.js");
+    }
+  }, []);
   return (
     <SWRConfig value={options(cache)}>
       <Meta />
@@ -100,7 +106,7 @@ const Meta = () => {
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={desc} />
-      <link rel="stylesheet" href="/style.css?v=2" />
+      <link rel="stylesheet" href="/style.css" />
       <link rel="icon" href="/ultra.svg"></link>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
