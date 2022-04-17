@@ -24,7 +24,7 @@ async function fetchAndCacheIfOk(event) {
     // don't cache non-ok responses
     if (response.ok) {
       const responseClone = response.clone();
-      const cache = await caches.open("my-cache-v1");
+      const cache = await caches.open(CACHE_NAME);
       await cache.put(event.request, responseClone);
     }
 
