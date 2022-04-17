@@ -1,7 +1,6 @@
-const CACHE_NAME = "ultra-v1";
+const CACHE_NAME = "ultra.v1";
 
 const CACHED_URLS = [
-  "/",
   "/style.css",
   "/ultra.svg",
   "/clouds-1.webp",
@@ -18,34 +17,48 @@ self.addEventListener("install", (event) => {
   );
 });
 
-self.addEventListener("fetch", (event) => {
-  const { request } = event;
+async function fetchAndCacheIfOk(event) {
+  try {
+    const response = await fetch(event.request);
 
-  if (request.cache === "only-if-cached" && request.mode !== "same-origin") {
-    return;
+    // don't cache non-ok responses
+    if (response.ok) {
+      const responseClone = response.clone();
+      const cache = await caches.open("my-cache-v1");
+      await cache.put(event.request, responseClone);
+    }
+
+    return response;
+  } catch (e) {
+    return e;
   }
+}
 
-  event.respondWith(
-    (async function () {
-      const cache = await caches.open(CACHE_NAME);
+async function fetchWithCache(event) {
+  const cache = await caches.open(CACHE_NAME);
+  const response = await cache.match(event.request);
+  if (response) {
+    // it is cached but we want to update it so request but not await
+    fetchAndCacheIfOk(event);
+    // return the cached response
+    return response;
+  } else {
+    // it was not cached yet so request and cache
+    return fetchAndCacheIfOk(event);
+  }
+}
 
-      const cachedResponsePromise = await cache.match(request);
-      const networkResponsePromise = fetch(request);
+function handleFetch(event) {
+  // only intercept the request if there is no no-cache header
+  if (event.request.headers.get("cache-control") !== "no-cache") {
+    // important: respondWith has to be called sync, otherwise
+    // the service worker won't know whats going on.
+    // Had to learn this the hard way
+    event.respondWith(fetchWithCache(event));
+  }
+}
 
-      if (request.url.startsWith(self.location.origin)) {
-        event.waitUntil(
-          (async function () {
-            const networkResponse = await networkResponsePromise;
-
-            await cache.put(request, networkResponse.clone());
-          })()
-        );
-      }
-
-      return cachedResponsePromise || networkResponsePromise;
-    })()
-  );
-});
+self.addEventListener("fetch", handleFetch);
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
