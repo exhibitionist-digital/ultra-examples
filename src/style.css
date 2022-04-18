@@ -206,6 +206,7 @@ ul,
 ol,
 blockquote {
   line-height: 1.5;
+  max-width: 600px;
 }
 
 h1,
@@ -274,10 +275,16 @@ ol {
   list-style-type: none;
 }
 
+.envs li {
+  display: flex;
+}
+
 li::before {
   content: "▸ ";
   color: #ff3399;
   font-weight: 200;
+  display: inline-block;
+  margin-right: 0.35em;
 }
 
 ul > li > ul > li {

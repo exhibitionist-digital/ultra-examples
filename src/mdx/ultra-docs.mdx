@@ -1,5 +1,6 @@
 - [Quickstart](#quickstart)
 - [Anatomy of an Ultra project](#anatomy-of-an-ultra-project)
+- [Permissions](#permissions)
 - [Suspense data fetching](#suspense-data-fetching)
 - [Routing](#routing)
 - [Head](#head)
@@ -10,10 +11,14 @@
 
 ### [Quickstart](#quickstart)
 
-Clone this [repo](https://github.com/exhibitionist-digital/ultra-examples) and run `deno task dev` and then browse to [https://localhost:8000](https://localhost:8000)
+```text
+git clone https://github.com/exhibitionist-digital/ultra-examples
+cd ultra-examples
+deno task dev
+```
 
-
-More examples are found in the following branches in the ultra-examples repo: `react-18`, `three-js`, `web3`
+More examples are found in the following branches in the ultra-examples repo:
+`react-18`, `three-js`, `web3`
 
 ---
 
@@ -55,13 +60,21 @@ Here we include the dependencies of the project:
 }
 ```
 
-The above imports are all required to run **Ultra**. You can add other dependencies here, and use the import keys as an import alias in your project code ([see import maps section in the Deno manual](https://deno.land/manual/linking_to_external_code/import_maps)).
+The above imports are all required to run **Ultra**. You can add other
+dependencies here, and use the import keys as an import alias in your project
+code
+([see import maps section in the Deno manual](https://deno.land/manual/linking_to_external_code/import_maps)).
 
-`app` is the entry point to your application. It can live anywhere in the `src` directory. It can be `jsx` or `tsx`.
+`app` is the entry point to your application. It can live anywhere in the `src`
+directory. It can be `jsx` or `tsx`.
 
 #### src
 
-All of your project code should live in the `src` directory. The only requirement is an `app.tsx/jsx` file, which is included in your importmap above. Feel free to structure your project how you like. Static files (css, images, etc) can be placed in this directory as well, and will be served as the `root` of your domain.
+All of your project code should live in the `src` directory. The only
+requirement is an `app.tsx/jsx` file, which is included in your importmap above.
+Feel free to structure your project how you like. Static files (css, images,
+etc) can be placed in this directory as well, and will be served as the `root`
+of your domain.
 
 #### src/app.tsx
 
@@ -99,17 +112,21 @@ export default const Ultra = ({ cache }: { cache: Cache }) => {
 };
 ```
 
-1. File extensions are important. Always include `.tsx`/`.jsx` in your import statements.
-2. The `ultraCache` function populates the server-side cache and rehydrates the client-side cache. It is not needed unless you are using Suspense or SWR.
+1. File extensions are important. Always include `.tsx`/`.jsx` in your import
+   statements.
+2. The `ultraCache` function populates the server-side cache and rehydrates the
+   client-side cache. It is not needed unless you are using Suspense or SWR.
 
 #### deno.json
 
-Using the native [Deno config](https://deno.land/manual/getting_started/configuration_file), ensure you specify your importMap path here, as well as any common tasks.
+Using the native
+[Deno config](https://deno.land/manual/getting_started/configuration_file),
+ensure you specify your importMap path here, as well as any common tasks.
 
 ```javascript
 {
   "tasks": {
-    "dev": "mode=dev deno run -A --unstable server.js",
+    "dev": "mode=dev deno run -A --unstable --no-check server.js",
     "start": "deno run -A --unstable server.js",
     "cache": "deno cache --reload server.js",
     "vendor": "importMap=importMap.json deno run -A --unstable https://deno.land/x/ultra/vendor.ts",
@@ -118,39 +135,73 @@ Using the native [Deno config](https://deno.land/manual/getting_started/configur
 }
 ```
 
-Defined Tasks:
+**Defined Tasks:**
 
-- dev - always forces new imports of ESM files.
-- start - production mode that uses cached ESM imports.
-- cache - refreshed the deno cache for server.js.
-- vendor - see [Vendoring](#vendoring) below.
+- **dev** - always forces re-importing of ESM files, enabled reload on save.
+- **start** - Production mode that uses cached ESM imports.
+- **cache** - refreshed the deno cache for server.js.
+- **vendor** - see [Vendoring](#vendoring) below.
 
-Permissions:
+---
 
-In production, instead of `-A`, define all the utilized permissions with appropriate values to take full advantage of [Deno's permission-based security](https://deno.land/manual/getting_started/permissions). Ultra uses the following permissions: allow-net, allow-read, allow-run, allow-env, allow-write.
-- To specify `--allow-env` add these **Ultra** used environmental variables to the list of custom ones that you use (in a comma-separated list):
-  - mode - deployment mode. "dev" is default. All other modes are considered production.
-  - port - the port the server is run on; 8000 is the default.
-  - source - the name of the source directory; "src" is the default.
-  - vendor - the name of the vendor directory; "vendor" is the default.
-  - config - path to the configuration file; "./deno.json" is the default.
-  - root - the base url; "http://localhost:8000" is the default.
-  - lang - the site's language; "en" is the default.
-  - disableStreaming - whether streaming is disabled. It is 0 by default, meaning that it is not disabled.
-  - api - the relative directory for api files; "src/api" is the default.
-  - vendor - the directory where vendor files are stored inside of the `.ultra` folder; "x" by default.
-  - importMapPath - the path to the import map file; "importMap.json" is the default.
-- To specify `--allow-read` , add `./.ultra,./importMap.json` to the list of directories or files that you use.
-- To specify `--allow-write`, add `./.ultra` to the list of directories or files that you use.
-- To specify `--allow-net`, add `https://deno.land/x/ultra/` to the list of internet Urls that you use.
-- To specify `--allow-run`,add `esbuild` to the list of sub-processes that you may run.
+### [Permissions](#permissions)
+
+In production, instead of `-A`, define all the utilized permissions with
+appropriate values to take full advantage of
+[Deno's permission-based security](https://deno.land/manual/getting_started/permissions).
+Ultra uses the following permissions: `allow-net`, `allow-read`, `allow-env`,
+`allow-write`.
+
+#### allow-env
+
+Add these **Ultra** used environmental variables to the list of custom ones that
+you use (in a comma-separated list):
+
+<div class="envs">
+
+- **mode**: (optional)\
+  Deployment mode. `dev` is the value for development. All other modes are
+  considered production.
+
+- **port**: `8000`\
+  The port the server is run on.
+
+- **source**: `src`\
+  The name of the source directory.
+
+- **root**: `http://localhost:8000`\
+  The base url of your project.
+
+- **lang**: `en`\
+  The site's language, set as the `html lang`
+
+- **disableStreaming**: (optional)\
+  Whether streaming is disabled. Set to `1` to disable streaming.
+
+</div>
+
+#### allow-read
+
+Add `./.ultra,./importMap.json` to the list of directories or files that you
+use.
+
+#### allow-write
+
+Add `./.ultra` to the list of directories or files that you use.
+
+#### allow-net
+
+Add `https://deno.land/x/ultra/` to the list of internet Urls that you use.
+
 ---
 
 ### [Suspense data fetching](#suspense-data-fetching)
 
-Vercel's [SWR](https://github.com/vercel/swr) lets us fetch data anywhere in our components and works with Suspense. **Ultra** uses the brand new **SWR 1.0.0+**.
+Vercel's [SWR](https://github.com/vercel/swr) lets us fetch data anywhere in our
+components and works with Suspense. **Ultra** uses the brand new **SWR 1.0.0+**.
 
-All **SWR** options are supported [SWR docs](https://swr.vercel.app/docs/options#options).
+All **SWR** options are supported
+[SWR docs](https://swr.vercel.app/docs/options#options).
 
 ```javascript
 import { SWRConfig } from "swr";
@@ -174,9 +225,13 @@ const Ultra = ({ cache }) => {
 
 ### [Routing](#routing)
 
-Powered by [Wouter](https://github.com/molefrog/wouter). **Wouter** is fully-featured, tiny (1.36 KB), and the best React router that we've ever used. **Ultra** comes with a server side integration which allows full functionality of **Wouter**.
+Powered by [Wouter](https://github.com/molefrog/wouter). **Wouter** is
+fully-featured, tiny (1.36 KB), and the best React router that we've ever used.
+**Ultra** comes with a server side integration which allows full functionality
+of **Wouter**.
 
-All **Wouter** hooks and functionality is supported [Wouter docs](https://github.com/molefrog/wouter#wouter-api).
+All **Wouter** hooks and functionality is supported
+[Wouter docs](https://github.com/molefrog/wouter#wouter-api).
 
 ```javascript
 import React, { Suspense } from "react";
@@ -187,7 +242,7 @@ const Home = lazy(() => import("./home.jsx"));
 const App = () => {
   return (
     <Route path="/">
-       <Home />
+      <Home />
     </Route>
   );
 };
@@ -197,7 +252,9 @@ const App = () => {
 
 ### [Head](#head)
 
-Powered by [react-helmet-async](https://github.com/staylor/react-helmet-async). It is used to add markup to the `html` `<head>` element such as `<title>`, `<meta>` and `<link>` tags.
+Powered by [react-helmet-async](https://github.com/staylor/react-helmet-async).
+It is used to add markup to the `html` `<head>` element such as `<title>`,
+`<meta>` and `<link>` tags.
 
 ```javascript
 import React from "react";
@@ -216,29 +273,57 @@ const App = () => {
 
 ### [Vendoring](#vendoring)
 
-During development, it's helpful to utilise CDNs like `esm.sh`, `unpkg.com`, and `deno.land/x` to serve your projects dependencies. When deploying to production, you may want to forego the CDNs and serve your dependencies locally. We have a script for doing this encapsulated in the `vendor` task defined in `deno.json`:
+During development, it's helpful to utilise CDNs like `esm.sh`, `unpkg.com`, and
+`deno.land/x` to serve your projects dependencies. When deploying to production,
+you may want to forego the CDNs and serve your dependencies locally. We have a
+script for doing this encapsulated in the `vendor` task defined in `deno.json`:
 
 ```bash
 importMap=importMap.json deno run -A --unstable https://deno.land/x/ultra/vendor.ts
 ```
 
-This will download a complete graph of your dependencies to a `.ultra/x` directory, as well as create a `vendorMap.json` import map file. You can then define this new import map in your `deno.json` file to swap to local dependencies.
+This will download a complete graph of your dependencies to a `.ultra/x`
+directory, as well as create a `vendorMap.json` import map file. You can then
+define this new import map in your `deno.json` file to swap to local
+dependencies.
 
-> As of v0.8.0, all projects deployed to Deno Deploy will have this feature enabled by default.
+> As of v0.8.0, all projects deployed to Deno Deploy will have this feature
+> enabled by default.
 
 ---
 
 ### [Deploying](#deploying)
 
+#### With Docker/Fly
+
+`dockerfile`
+
+This is an example dockerfile which supports vendored dependencies.
+
+```bash
+FROM denoland/deno:1.20.3
+EXPOSE 8000
+RUN apt-get update
+RUN apt-get install -y jq moreutils
+WORKDIR /
+COPY . .
+RUN deno task vendor
+RUN jq '.importMap = "./vendorMap.json"' deno.json|sponge deno.json
+CMD ["deno", "task", "start"]
+```
+
 #### With Deno Deploy
 
-**Ultra** supports the official [Deno Deploy GitHub Action](https://deno.com/blog/deploy-static-files)!
+**Ultra** supports the official
+[Deno Deploy GitHub Action](https://deno.com/blog/deploy-static-files)!
 
 1. Create a project in the Deno Deploy Dashboard
 2. Select `GitHub Action` integration
-3. Add the following action to your project. (Note to update the `root` and `project name`)
+3. Add the following action to your project. (Note to update the `root` and
+   `project name`)
 
-> Note: Deno Deploy does **NOT** support dynamic imports (yet). If you are using these for routing, the project will not deploy.
+> Note: Deno Deploy does **NOT** support dynamic imports (yet). If you are using
+> these for routing, the project will not deploy.
 
 ```yaml
 name: deno deploy
@@ -273,17 +358,4 @@ jobs:
           project: [PROJECT_NAME]
           entrypoint: ULTRA.js
           root: .ultra
-```
-
-#### With Docker/Fly
-
-`dockerfile`
-
-```bash
-FROM denoland/deno:1.20.3
-EXPOSE 8000
-WORKDIR /ultra
-COPY . .
-RUN deno task cache
-CMD ["deno", "task", "start"]
 ```
