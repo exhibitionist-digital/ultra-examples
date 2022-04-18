@@ -1,34 +1,29 @@
 import React, { Suspense } from "react";
 import useSWR from "swr";
 import { useLocation } from "wouter";
+import * as runtime from "jsx-runtime";
+import { runSync } from "mdx-js/run";
 
 const Page = () => {
   return (
     <Suspense fallback={<strong>Loading</strong>}>
-      <Content />
+      <PageContent />
     </Suspense>
   );
 };
 
-const Content = () => {
-  let [location] = useLocation();
-  if (location == "/") location = "/about";
-
+const PageContent = () => {
+  const [location] = useLocation();
   const { data, error } = useSWR(location, fetcher);
+  const { default: Content } = runSync(data?.content, runtime);
+  if (error) return <strong>404</strong>;
+  return <Content />;
+};
 
-  if (error || !data?.content) return <strong>404</strong>;
-
-  return (
-    <div>
-      <div dangerouslySetInnerHTML={{ __html: data?.content }}>
-      </div>
-    </div>
-  );
+export const fetcher = () => {
+  return fetch(
+    `/api/docs`,
+  ).then((data) => data.json());
 };
 
 export default Page;
-
-export const fetcher = (slug: string) =>
-  fetch(
-    `https://d1vbyel82rxsrf.cloudfront.net${slug}`,
-  ).then((data) => data.json());
