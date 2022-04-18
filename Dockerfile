@@ -1,4 +1,4 @@
-FROM denoland/deno:1.20.3
+FROM denoland/deno:1.20.6
 EXPOSE 8000
 RUN apt-get update
 RUN apt-get install -y jq moreutils
