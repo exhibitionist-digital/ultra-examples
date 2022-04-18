@@ -5,5 +5,12 @@
   "deno.importMap": "./importMap.json",
   "deno.suggest.imports.hosts": {
     "https://deno.land": false
+  },
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   }
 }
