@@ -27,7 +27,7 @@ body {
 }
 
 main {
-  margin: 2em;
+  margin: 2em 1em;
 }
 
 strong {
@@ -209,6 +209,25 @@ blockquote {
   max-width: 600px;
 }
 
+.docs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.docs .left {
+  margin-right: 3em;
+}
+
+.docs .left,
+.docs .right {
+  max-width: 100%;
+}
+
+.docs h3:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+}
+
 h1,
 .logo h3 {
   background: linear-gradient(to right, #6666ff, #0099ff, #ff3399, #6666ff);
@@ -354,7 +373,9 @@ pre code.hljs {
 }
 code.hljs {
   padding: 3px 5px;
-} /*!
+}
+
+/*!
   Theme: GitHub Dark
   Description: Dark theme as seen on github.com
   Author: github.com
@@ -364,6 +385,7 @@ code.hljs {
   Outdated base version: https://github.com/primer/github-syntax-dark
   Current colors taken from GitHub's CSS
 */
+
 .hljs {
   color: #c9d1d9;
   background: #0d1117;

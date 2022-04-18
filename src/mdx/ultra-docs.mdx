@@ -1,3 +1,5 @@
+<div class="left">
+
 - [Quickstart](#quickstart)
 - [Anatomy of an Ultra project](#anatomy-of-an-ultra-project)
 - [Permissions](#permissions)
@@ -5,9 +7,13 @@
 - [Routing](#routing)
 - [Head](#head)
 - [Vendoring](#vendoring)
+- [Service Workers](#service-workers)
+- [Dynamic MDX](#dynamic-mdx)
 - [Deploying](#deploying)
 
----
+</div>
+
+<div class="right">
 
 ### [Quickstart](#quickstart)
 
@@ -271,6 +277,74 @@ const App = () => {
 
 ---
 
+### [Service Workers](#service-workers)
+
+We recommend the usage of vanilla Service Workers in your Ultra app. An
+incredibly powerful tool to help with the serving, caching, and optimisation of
+your website. Use them carefully.
+
+[MDN Docs for Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
+
+Here is an example that is currently used on this site:
+[Ultrajs Service Worker](https://github.com/exhibitionist-digital/ultra-examples/blob/ultra-website/src/service-worker.js)
+
+---
+
+### [Dynamic MDX](#dynamic-mdx)
+
+Ultra supports using MDX dynamically.
+
+[MDX on demand](https://mdxjs.com/guides/mdx-on-demand/)
+
+In fact,
+[this very text](https://github.com/exhibitionist-digital/ultra-examples/blob/ultra-website/src/api/docs.js)
+was generated with dynamic MDX.
+
+We have a plugin that will make any of your local component imports work inside
+of Ultra. This is how an basic API route could look...
+
+#### MDX API route
+
+```javascript
+import { compile } from "https://esm.sh/@mdx-js/mdx";
+import ultraMdx from "https://deno.land/x/ultra/ultraMdx.ts";
+
+export default async () => {
+  const source = await Deno.readTextFile(
+    `${Deno.cwd()}/src/YOUR_MDX_FILE.mdx`,
+  );
+
+  const content = String(
+    await compile(source, {
+      outputFormat: "function-body",
+      useDynamicImport: true,
+      rehypePlugins: [ultraMdx],
+    }),
+  );
+  const body = JSON.stringify({ content });
+  return new Response(body, { headers });
+};
+```
+
+#### MDX JSX template
+
+```javascript
+// Ensure you only import `run` to keep client size to a minimum
+import { runSync } from "https://esm.sh/@mdx-js/mdx/run";
+import * as runtime from "https://esm.sh/react@v18.0.0/jsx-runtime.js";
+
+const Component = () => {
+  // Fetch the content from the API route above
+  const { data } = useSWR("/YOUR_API_ROUTE", fetcher);
+  // and use runSync on it
+  const { default: Content } = runSync(data.content, runtime);
+  // Use Content like a standard React component
+  return <Content />;
+};
+```
+
+---
+
 ### [Vendoring](#vendoring)
 
 During development, it's helpful to utilise CDNs like `esm.sh`, `unpkg.com`, and
@@ -359,3 +433,5 @@ jobs:
           entrypoint: ULTRA.js
           root: .ultra
 ```
+
+</div>

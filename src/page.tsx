@@ -17,7 +17,11 @@ const PageContent = () => {
   const { data, error } = useSWR(location, fetcher);
   const { default: Content } = runSync(data?.content, runtime);
   if (error) return <strong>404</strong>;
-  return <Content />;
+  return (
+    <div className="docs">
+      <Content />
+    </div>
+  );
 };
 
 export const fetcher = () => {
