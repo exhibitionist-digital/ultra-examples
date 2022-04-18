@@ -1,9 +1,9 @@
 name: ultra-website
 on:
   push:
-    branches: [ultra-www-mdx]
+    branches: [master]
   pull_request:
-    branches: [ultra-www-mdx]
+    branches: [master]
 
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
