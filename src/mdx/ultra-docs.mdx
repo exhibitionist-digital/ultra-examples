@@ -117,6 +117,33 @@ Using the native [Deno config](https://deno.land/manual/getting_started/configur
   "importMap": "importMap.json"
 }
 ```
+
+Defined Tasks:
+
+- dev - always forces new imports of ESM files.
+- start - production mode that uses cached ESM imports.
+- cache - refreshed the deno cache for server.js.
+- vendor - see [Vendoring](#vendoring) below.
+
+Permissions:
+
+In production, instead of `-A`, define all the utilized permissions with appropriate values to take full advantage of [Deno's permission-based security](https://deno.land/manual/getting_started/permissions). Ultra uses the following permissions: allow-net, allow-read, allow-run, allow-env, allow-write.
+- To specify `--allow-env` add these **Ultra** used environmental variables to the list of custom ones that you use (in a comma-separated list):
+  - mode - deployment mode. "dev" is default. All other modes are considered production.
+  - port - the port the server is run on; 8000 is the default.
+  - source - the name of the source directory; "src" is the default.
+  - vendor - the name of the vendor directory; "vendor" is the default.
+  - config - path to the configuration file; "./deno.json" is the default.
+  - root - the base url; "http://localhost:8000" is the default.
+  - lang - the site's language; "en" is the default.
+  - disableStreaming - whether streaming is disabled. It is 0 by default, meaning that it is not disabled.
+  - api - the relative directory for api files; "src/api" is the default.
+  - vendor - the directory where vendor files are stored inside of the `.ultra` folder; "x" by default.
+  - importMapPath - the path to the import map file; "importMap.json" is the default.
+- To specify `--allow-read` , add `./.ultra,./importMap.json` to the list of directories or files that you use.
+- To specify `--allow-write`, add `./.ultra` to the list of directories or files that you use.
+- To specify `--allow-net`, add `https://deno.land/x/ultra/` to the list of internet Urls that you use.
+- To specify `--allow-run`,add `esbuild` to the list of sub-processes that you may run.
 ---
 
 ### [Suspense data fetching](#suspense-data-fetching)
