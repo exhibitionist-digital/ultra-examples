@@ -11,11 +11,6 @@ export default () => {
         "https://github.com/exhibitionist-digital/ultra-examples/tree/ultra-website",
     },
     {
-      "title": "exhibitionist.digital",
-      "blurb": "Our company website.",
-      "url": "https://exhibitionist.digital",
-    },
-    {
       "title": "React 18 suspense SSR",
       "blurb": "Streaming SSR with Suspense. Taken from the React 18 SSR demo.",
       "url": "https://react18.ultrajs.dev",
