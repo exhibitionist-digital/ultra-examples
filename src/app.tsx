@@ -117,6 +117,8 @@ const Meta = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:image" content={img} />
+      <link rel="preload" as="fetch" href="/api/docs" />
+      <link rel="preload" as="fetch" href="/api/examples" />
     </Helmet>
   );
 };
