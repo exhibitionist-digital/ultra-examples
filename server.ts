@@ -1,3 +1,3 @@
-import ultra from "https://deno.land/x/ultra@v0.8.0/mod.ts";
+import ultra from "https://deno.land/x/ultra@v1.0.0/server.ts";
 
 await ultra();
