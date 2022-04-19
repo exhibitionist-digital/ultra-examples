@@ -1,3 +1,3 @@
-import ultra from "https://deno.land/x/ultra@v0.8.2/mod.ts";
+import ultra from "https://raw.githubusercontent.com/exhibitionist-digital/ultra/master/server.ts";
 
 await ultra();
