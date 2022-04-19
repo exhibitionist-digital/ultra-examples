@@ -1,4 +1,4 @@
-const CACHE_NAME = "ultra.v2";
+const CACHE_NAME = "ultra.v3";
 
 const CACHED_URLS = [
   "/style.css",
