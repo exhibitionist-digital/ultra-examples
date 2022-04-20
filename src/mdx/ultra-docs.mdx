@@ -319,7 +319,7 @@ of Ultra. This is how an basic API route could look...
 #### MDX API route
 
 ```javascript
-import { compile } from "https://esm.sh/@mdx-js/mdx";
+import { compile } from "https://esm.sh/@mdx-js/mdx/lib/compile";
 import ultraMdx from "https://deno.land/x/ultra/ultraMdx.ts";
 
 export default async () => {
@@ -343,7 +343,7 @@ export default async () => {
 
 ```javascript
 // Ensure you only import `run` to keep client size to a minimum
-import { runSync } from "https://esm.sh/@mdx-js/mdx/run";
+import { runSync } from "https://esm.sh/@mdx-js/mdx/lib/run";
 import * as runtime from "https://esm.sh/react@v18.0.0/jsx-runtime.js";
 
 const Component = () => {
