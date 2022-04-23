@@ -85,12 +85,12 @@ const Ultra = ({ cache }: { cache: Cache }) => {
             </p>
           </Route>
           <Route path="/examples">
-            <Suspense fallback={null}>
+            <Suspense fallback={<strong>Loading</strong>}>
               <Examples />
             </Suspense>
           </Route>
           <Route path="/:slug">
-            <Suspense fallback={null}>
+            <Suspense fallback={<strong>Loading</strong>}>
               <Page />
             </Suspense>
           </Route>
