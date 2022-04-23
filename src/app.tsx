@@ -1,12 +1,15 @@
-import React, { Suspense, useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { SWRConfig } from "swr";
 import { Link, Route, Switch, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
 import ultraCache from "ultra/cache";
-import Page from "./page.tsx";
 import GitHub from "./github.tsx";
-import Examples from "./examples.tsx";
+// import Page from "./page.tsx";
+
 import { Cache } from "https://deno.land/x/ultra/src/types.ts";
+
+const Page = lazy(() => import("./page.tsx"));
+const Examples = lazy(() => import("./examples.tsx"));
 
 const options = (cache: Cache) => ({
   provider: () => ultraCache(cache),
@@ -82,10 +85,14 @@ const Ultra = ({ cache }: { cache: Cache }) => {
             </p>
           </Route>
           <Route path="/examples">
-            <Examples />
+            <Suspense fallback={null}>
+              <Examples />
+            </Suspense>
           </Route>
           <Route path="/:slug">
-            <Page />
+            <Suspense fallback={null}>
+              <Page />
+            </Suspense>
           </Route>
           <Route>
             <strong>404</strong>
