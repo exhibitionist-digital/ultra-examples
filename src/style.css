@@ -5,6 +5,11 @@
   font-display: block;
 }
 
+::selection {
+  background: #6666ff;
+  color: white;
+}
+
 html,
 body {
   background: #000;
