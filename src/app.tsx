@@ -73,7 +73,7 @@ const Ultra = ({ cache }: { cache: Cache }) => {
 
             <p>
               <strong>Ultra</strong>{" "}
-              is a web framework that leans hard into your browser's native
+              is a web-app framework that leans hard into your browser's native
               features. Embrace the future of <strong>ES Modules</strong>,{" "}
               <strong>Import Maps</strong>, and{" "}
               <strong>Web Streams</strong>. All while supporting some of the
@@ -126,6 +126,8 @@ const Meta = () => {
       <meta property="twitter:image" content={img} />
       <link rel="prefetch" as="fetch" href="/api/docs" />
       <link rel="prefetch" as="fetch" href="/api/examples" />
+      <link rel="prefetch" as="fetch" href="/page.js" />
+      <link rel="prefetch" as="fetch" href="/examples.js" />
     </Helmet>
   );
 };
