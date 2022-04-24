@@ -85,13 +85,13 @@ const Ultra = ({ cache }: { cache: Cache }) => {
             </p>
           </Route>
           <Route path="/examples">
-            <Meta title="Ultra: Examples" />
+            <Meta title="Ultra: Examples" desc="See it work." />
             <Suspense fallback={<strong>Loading</strong>}>
               <Examples />
             </Suspense>
           </Route>
           <Route path="/docs">
-            <Meta title="Ultra: Docs" />
+            <Meta title="Ultra: Docs" desc="How it works." />
             <Suspense fallback={<strong>Loading</strong>}>
               <Page />
             </Suspense>
@@ -109,13 +109,17 @@ const Ultra = ({ cache }: { cache: Cache }) => {
 export default Ultra;
 
 const Meta = (
-  { title = "Ultra: Un-bundle the Web", noIndex }: {
+  {
+    title = "Ultra: Un-bundle the Web",
+    desc = "Modern Streaming SSR React Framework in Deno.",
+    noIndex,
+  }: {
     title?: string;
     noIndex?: boolean;
+    desc?: string;
   },
 ) => {
   const img = "https://ultrajs.dev/ultra-share.jpg";
-  const desc = "Modern Streaming SSR React Framework in Deno";
   return (
     <Helmet>
       <title>{title}</title>
