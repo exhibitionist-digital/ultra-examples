@@ -29,7 +29,6 @@ const Ultra = ({ cache }: { cache: Cache }) => {
   }, []);
   return (
     <SWRConfig value={options(cache)}>
-      <Meta />
       <nav className="flex">
         <Link href="/" className="logo">
           <img src="/ultra.svg" width="50" height="50" alt="Ultra logo" />
@@ -55,6 +54,7 @@ const Ultra = ({ cache }: { cache: Cache }) => {
       <main>
         <Switch>
           <Route path="/">
+            <Meta />
             <section className="hero">
               <img
                 src="/clouds-1.webp"
@@ -85,11 +85,13 @@ const Ultra = ({ cache }: { cache: Cache }) => {
             </p>
           </Route>
           <Route path="/examples">
+            <Meta title="Ultra: Examples" />
             <Suspense fallback={<strong>Loading</strong>}>
               <Examples />
             </Suspense>
           </Route>
-          <Route path="/:slug">
+          <Route path="/docs">
+            <Meta title="Ultra: Docs" />
             <Suspense fallback={<strong>Loading</strong>}>
               <Page />
             </Suspense>
@@ -105,9 +107,8 @@ const Ultra = ({ cache }: { cache: Cache }) => {
 
 export default Ultra;
 
-const Meta = () => {
+const Meta = ({ title = "Ultra: Un-bundle the Web" }: { title?: string }) => {
   const img = "https://ultrajs.dev/ultra-share.jpg";
-  const title = "Ultra: un-bundle the web";
   const desc = "Modern Streaming React Framework";
   return (
     <Helmet>
@@ -126,8 +127,6 @@ const Meta = () => {
       <meta property="twitter:image" content={img} />
       <link rel="prefetch" as="fetch" href="/api/docs" />
       <link rel="prefetch" as="fetch" href="/api/examples" />
-      <link rel="prefetch" as="fetch" href="/page.js" />
-      <link rel="prefetch" as="fetch" href="/examples.js" />
     </Helmet>
   );
 };
