@@ -97,8 +97,8 @@ const Ultra = ({ cache }: { cache: Cache }) => {
             </Suspense>
           </Route>
           <Route>
-            <Meta title="Ultra: 404" />
-            <strong>404</strong>
+            <Meta title="Ultra: 404" noIndex />
+            <strong>Congrats, you've found the 404 page</strong>
           </Route>
         </Switch>
       </main>
@@ -108,12 +108,18 @@ const Ultra = ({ cache }: { cache: Cache }) => {
 
 export default Ultra;
 
-const Meta = ({ title = "Ultra: Un-bundle the Web" }: { title?: string }) => {
+const Meta = (
+  { title = "Ultra: Un-bundle the Web", noIndex }: {
+    title?: string;
+    noIndex?: boolean;
+  },
+) => {
   const img = "https://ultrajs.dev/ultra-share.jpg";
   const desc = "Modern Streaming React Framework";
   return (
     <Helmet>
       <title>{title}</title>
+      {noIndex && <meta name="robots" content="noindex" />}
       <meta name="description" content={desc} />
       <link rel="stylesheet" href="/style.css" />
       <link rel="icon" href="/ultra.svg"></link>
