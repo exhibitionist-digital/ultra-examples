@@ -115,7 +115,7 @@ const Meta = (
   },
 ) => {
   const img = "https://ultrajs.dev/ultra-share.jpg";
-  const desc = "Modern Streaming React Framework";
+  const desc = "Modern Streaming SSR React Framework in Deno";
   return (
     <Helmet>
       <title>{title}</title>
