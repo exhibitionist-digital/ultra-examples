@@ -97,6 +97,7 @@ const Ultra = ({ cache }: { cache: Cache }) => {
             </Suspense>
           </Route>
           <Route>
+            <Meta title="Ultra: 404" />
             <strong>404</strong>
           </Route>
         </Switch>
