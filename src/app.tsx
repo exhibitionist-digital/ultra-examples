@@ -83,6 +83,17 @@ const Ultra = ({ cache }: { cache: Cache }) => {
               </strong>{" "}
               and <strong>TypeScript</strong>).
             </p>
+            <p>
+              <Link href="/docs">Get Started</Link>
+            </p>
+            <p>
+              <a
+                href="https://github.com/exhibitionist-digital/ultra"
+                target="_blank"
+              >
+                View on GitHub
+              </a>
+            </p>
           </Route>
           <Route path="/examples">
             <Meta title="Ultra: Examples" desc="See it work." />

@@ -1,15 +1,11 @@
-import LRU from "https://deno.land/x/lru/mod.ts";
-
-const gitCache = new LRU(20);
-
 export default async () => {
   const headers = {
     "content-type": "application/json",
   };
 
   // get count and timestamp from cache
-  let count = gitCache.get("count");
-  const stamp = +gitCache.get("stamp");
+  let count = localStorage.getItem("count");
+  const stamp = +localStorage.getItem("stamp");
 
   // if nothing in cache, this request will be a bit slower
   if (!count) count = await getCount();
@@ -32,8 +28,8 @@ const getCount = async () => {
   );
   data = await data.json();
   if (data?.stargazers_count) {
-    gitCache.set("count", data?.stargazers_count);
-    gitCache.set("stamp", +new Date());
+    localStorage.setItem("count", data?.stargazers_count);
+    localStorage.setItem("stamp", +new Date());
   }
   return data?.stargazers_count;
 };
