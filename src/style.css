@@ -214,18 +214,24 @@ blockquote {
   max-width: 600px;
 }
 
-.docs {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.docs .left {
-  margin-right: 3em;
-}
-
 .docs .left,
 .docs .right {
   max-width: 100%;
+}
+
+@media (orientation: landscape) {
+  .docs {
+    display: flex;
+  }
+
+  .docs .left {
+    margin-right: 3em;
+  }
+
+  .docs .left ul {
+    position: sticky;
+    top: 1em;
+  }
 }
 
 .docs h3:first-of-type {
